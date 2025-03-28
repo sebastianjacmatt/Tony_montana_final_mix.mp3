@@ -1,13 +1,19 @@
 "use client";
 import { motion, useAnimation } from "framer-motion";
 import { useState } from "react";
+import { getAllUsers } from "@/lib/getUserInfo";
 
 const cards = ["1", "2", "3", "4", "5"];
+
+async function fetchUsers(){
+    const data = await getAllUsers();
+    
+    return data;
+}
 
 export default function SwipeCard() {
     const controls = useAnimation();
     const [index, setIndex] = useState(0);
-    const [isSwiped, setIsSwiped] = useState(false);
 
     const handleDragEnd = (event: PointerEvent, info: { offset: { x: number } }) => {
         const swipeThreshold = 150;
@@ -26,7 +32,7 @@ export default function SwipeCard() {
 
     return(
         <div id="card" className="w-4rem display flex items-center justify-center h-screen">
-            {index < cards.length && !isSwiped && (<motion.div className="w-80 h-96 bg-white shadow-lg rounded-2xl flex items-center justify-center text-xl font-semibold cursor-grab text-black"
+            {index < cards.length && (<motion.div className="w-80 h-96 bg-white shadow-lg rounded-2xl flex items-center justify-center text-xl font-semibold cursor-grab text-black"
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
                     onDragEnd={handleDragEnd}
