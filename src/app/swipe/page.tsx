@@ -1,9 +1,11 @@
 import SwipeCard from "@/component/swipecard";
+import currentLoggedInUser from "@/lib/currentLoggedInUser";
 
-export default function Matches() {
+export default async function Matches() {
+    const user = await currentLoggedInUser();
     return (
         <div className="w-full h-screen">
-            <SwipeCard/>
+            <SwipeCard user = {user}/>
         </div>
     )
 }

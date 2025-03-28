@@ -2,7 +2,9 @@
 import { motion, useAnimation } from "framer-motion";
 import { useState, useEffect } from "react";
 import { getAllUsers } from "@/lib/getUserInfo";
+import { likeUser } from "@/lib/likeUser";
 import User from "@/types/user";
+
 
 
 
@@ -14,17 +16,19 @@ async function fetchUsers(){
 
 
 
-export default function SwipeCard() {
+export default function SwipeCard({user} :{user : User}) {
     const [cards, setCards] = useState(Array<User>);
     const controls = useAnimation();
     const [index, setIndex] = useState(0);
-    
 
     useEffect(() => {
         const loadUsers = async () => {
             try {
                 const usersData = await fetchUsers();
                 setCards(usersData);
+                
+                
+                
             } catch (error) {
                 console.error("Error fetching users:", error);
             }
@@ -37,6 +41,10 @@ export default function SwipeCard() {
     const handleDragEnd = (event: PointerEvent, info: { offset: { x: number } }) => {
         const swipeThreshold = 150;
         if (Math.abs(info.offset.x) > swipeThreshold) {
+            // User swiped right
+            if (info.offset.x > 0) {
+                likeUser(user.id, cards[index].id);
+            }
             controls.start({ x: info.offset.x > 0 ? 500 : -500, opacity: 0, rotate: info.offset.x > 0 ? 15 : -15 })
                 .then(() => {
                     setIndex((prev) => prev + 1); // Move to next word

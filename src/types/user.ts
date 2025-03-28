@@ -8,7 +8,6 @@ type User = {
         bio: string;
         image: string;
     };
-    likes: string[];
     username: string;
 
 }
