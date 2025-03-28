@@ -14,6 +14,11 @@ Løpe dating nettside, lik tinder med swiping **stikkord** : **smart**, **raskt*
 - brukere ser matchesens sine
 - brukere kan swipe for å få matches
 
+sebastianjacmatt@gmail.com
+erik.g.ingebrigtsen@gmail.com
+tonylam750@outlook.com
+sander.eikenes2003@gmail.com
+
 ## Getting Started
 
 First, run the development server:
