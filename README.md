@@ -1,3 +1,30 @@
+# webaton - Tony_montana_final_mix.mp3
+
+## Description
+Løpe dating nettside, lik tinder med swiping **stikkord** : **smart**, **raskt**, **mange**. 
+
+## MVP
+- brukere logger inn
+- brukere ser profilen sin
+  - attributter de kan sette
+    - bilde
+    - pace
+    - løpesko
+    - vekt
+- brukere ser matchesens sine
+- brukere kan swipe for å få matches
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+pnpm dev
+```
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
