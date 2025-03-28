@@ -1,19 +1,38 @@
 "use client";
 import { motion, useAnimation } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getAllUsers } from "@/lib/getUserInfo";
+import User from "@/types/user";
 
-const cards = ["1", "2", "3", "4", "5"];
+
 
 async function fetchUsers(){
-    const data = await getAllUsers();
+    const data:User[] = await getAllUsers();
     
     return data;
 }
 
+
+
 export default function SwipeCard() {
+    const [cards, setCards] = useState(Array<User>);
     const controls = useAnimation();
     const [index, setIndex] = useState(0);
+    
+
+    useEffect(() => {
+        const loadUsers = async () => {
+            try {
+                const usersData = await fetchUsers();
+                setCards(usersData);
+            } catch (error) {
+                console.error("Error fetching users:", error);
+            }
+        };
+
+        loadUsers();
+    }, []);
+    
 
     const handleDragEnd = (event: PointerEvent, info: { offset: { x: number } }) => {
         const swipeThreshold = 150;
@@ -24,7 +43,8 @@ export default function SwipeCard() {
                     // setIsSwiped(true);
                     controls.set({ x: 0, opacity: 1, rotate: 0 }); // Reset animation
                 });
-        } else {
+        } 
+        else {
             // Snap back
             controls.start({ x: 0, rotate: 0 });
         }
@@ -32,15 +52,18 @@ export default function SwipeCard() {
 
     return(
         <div id="card" className="w-4rem display flex items-center justify-center h-screen">
-            {index < cards.length && (<motion.div className="w-80 h-96 bg-white shadow-lg rounded-2xl flex items-center justify-center text-xl font-semibold cursor-grab text-black"
+            {index < cards.length && (
+                <motion.div className="w-80 h-96 bg-white shadow-lg rounded-2xl flex items-center justify-center text-xl font-semibold cursor-grab text-black"
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
                     onDragEnd={handleDragEnd}
                     animate={controls}
                     initial={{ x: 0, opacity: 1 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}>
-                {cards[index]}
-            </motion.div>)}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                >
+                {cards[index].attributes.name}
+                </motion.div>)
+            }
         </div>
     )
 }
