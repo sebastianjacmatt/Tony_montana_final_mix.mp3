@@ -14,8 +14,6 @@ async function fetchUsers(){
 
 
 
-
-
 export default function SwipeCard() {
     const [cards, setCards] = useState(Array<User>);
     const controls = useAnimation();
