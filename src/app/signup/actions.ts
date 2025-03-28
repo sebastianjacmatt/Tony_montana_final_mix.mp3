@@ -35,6 +35,7 @@ export async function signup(formData: FormData) {
   });
 
   if (error) {
+    console.log("Error signing up:", error.message);
     redirect("/error");
   }
 
