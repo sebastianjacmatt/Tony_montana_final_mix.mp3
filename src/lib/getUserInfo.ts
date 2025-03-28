@@ -13,6 +13,7 @@ export async function getUserInfo(userId: string) {
   return data;
 }
 
+
 export async function getAllUsers(){
   const { data, error } = await supabase
   .from("profiles")
