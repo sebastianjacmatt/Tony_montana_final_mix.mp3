@@ -19,6 +19,13 @@ export default function LoginPage() {
         required
         className="bg-white text-black w-3/12"
       />
+      <label htmlFor="">Brukernavn</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        className="bg-white text-black w-3/12"
+      />
       <label htmlFor="">Navn</label>
       <input
         type="text"
