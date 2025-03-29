@@ -1,3 +1,4 @@
+import { User } from "@/types/user";
 import { supabase } from "./supabase";
 
 export async function getUserInfo(userId: string) {
@@ -24,17 +25,26 @@ export async function getAllUsers(){
   }
   return data;
 }
-export async function getUserMatches(usedId: string) {
-  const { data, error } = await supabase
+
+export async function getUserMatches(userId: string): Promise<User[]> {
+  const { data: matchData, error } = await supabase
     .from("matches")
-    .select()
-    .eq("user1_id", usedId)
+    .select("user2_id")
+    .eq("user1_id", userId);
+
   if (error) {
-    console.error("Error fetching matches info:", error.message);
+    console.error("Error fetching matches:", error.message);
     throw error;
   }
-  return data;
 
+  if (!matchData) return [];
+
+  const matchedUsers = await Promise.all(
+    matchData.map((match) => getUserInfo(match.user2_id))
+  );
+
+  return matchedUsers;
 }
+
 
 
