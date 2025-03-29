@@ -1,10 +1,21 @@
-import { CircleUser, Heart, House, LogOut, Wallet } from "lucide-react";
+import {
+  CircleUser,
+  Heart,
+  House,
+  LogOut,
+  MessageCircle,
+  Wallet,
+} from "lucide-react";
 import { logout } from "@/app/login/actions";
 
 export default function Nav() {
   return (
     <nav className="fixed bottom-0 w-full">
       <div className="flex bg-white items-center justify-center text-black p-4 gap-16">
+        <a href="/chat" className="flex flex-col items-center">
+          <MessageCircle className="w-8 h-8" />
+          Chat
+        </a>
         <a href="/matches" className="flex flex-col items-center">
           <Heart className="w-8 h-8" />
           Matches
