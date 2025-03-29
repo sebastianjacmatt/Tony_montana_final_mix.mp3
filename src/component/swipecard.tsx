@@ -3,10 +3,29 @@ import { motion, useAnimation } from "framer-motion";
 import { useState, useEffect } from "react";
 import { getAllUsers } from "@/lib/getUserInfo";
 import { likeUser } from "@/lib/likeUser";
+import { getLike} from "@/lib/getLike";
 import User from "@/types/user";
+import Like from "@/types/like";
+import { supabase } from "@/lib/supabase";
 
 
+async function setMatch(user1_id: string, user2_id: string){
+    const { error } = await supabase
+        .from("matches")
+        .insert({ user1_id: user1_id, user2_id: user2_id });
+    if (error) {
+        console.error("Error setting match:", error.message);
+        throw error;
+    }
+    console.log("Match set successfully");
+}
 
+async function checkIfMatch(likerId: string, likedId: string){
+    const data:Like = await getLike(likedId, likerId);
+    
+    console.log("likedata",data)
+    return data;
+}
 
 async function fetchUsers(){
     const data:User[] = await getAllUsers();
@@ -43,7 +62,22 @@ export default function SwipeCard({user} :{user : User}) {
         if (Math.abs(info.offset.x) > swipeThreshold) {
             // User swiped right
             if (info.offset.x > 0) {
-                likeUser(user.id, cards[index].id);
+                const otherUser = cards[index].id;
+
+                // like the other user
+                likeUser(user.id, otherUser);
+
+                // check if there is a match
+                checkIfMatch(user.id, otherUser).then((data) => {
+                    if(data){
+                        console.log("Match found!");
+                        setMatch(user.id, otherUser);
+                    }
+                    else{
+                        console.log("No match found");
+                    }
+                })
+                
             }
             controls.start({ x: info.offset.x > 0 ? 500 : -500, opacity: 0, rotate: info.offset.x > 0 ? 15 : -15 })
                 .then(() => {
