@@ -24,7 +24,7 @@ export default function UserProfile({ user }: { user: User }) {
           {/* User Info */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm sm:text-base ">
             <div className="bg-green-100 rounded-xl p-4 shadow-sm">
-              <span className="text-gray-800 block mb-1">Navn</span>
+              <span className="text-gray-800 block mb-1">Name</span>
               <span className="font-semibold text-gray-800">{user.attributes.name}</span>
             </div>
             <div className="bg-green-100 rounded-xl p-4 shadow-sm">
@@ -32,7 +32,7 @@ export default function UserProfile({ user }: { user: User }) {
               <span className="font-semibold text-gray-800">{user.attributes.pace}</span>
             </div>
             <div className="bg-green-100 rounded-xl p-4 shadow-sm">
-              <span className="text-gray-800 block mb-1">Sko</span>
+              <span className="text-gray-800 block mb-1">Running shoe</span>
               <span className="font-semibold text-gray-800">{user.attributes.sko}</span>
             </div>
             <div className="bg-green-100 rounded-xl p-4 shadow-sm">
