@@ -117,7 +117,7 @@ export default function SwipeCard({ user }: { user: User }) {
   return (
     <div
       id="card"
-      className="w-4rem display flex items-center justify-center h-screen"
+      className="w-4rem display flex items-center justify-center h-screen bg-gradient-to-bl from-green-300 to-emerald-700"
     >
       {cards.length <= index && (
         <h1 className="text-center text-xl">
@@ -148,18 +148,18 @@ export default function SwipeCard({ user }: { user: User }) {
               backgroundPosition: "center",
             }}
           />
-          <div className="h-1/3 w-full bg-white p-4 flex flex-col gap-1">
+          <div className="h-1/3 w-full bg- p-4 flex flex-col gap-1">
             <p className="text-2xl font-bold text-black">
               {cards[index].attributes.name}
             </p>
-            <p className="text-sm text-gray-600">
+            <p className="text-md text-gray-600">
               {cards[index].attributes.bio}
             </p>
             <div className="flex gap-4 mt-1">
-              <p className="text-sm text-gray-600">
+              <p className="text-md text-gray-600">
                 Sko: {cards[index].attributes.sko}
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-md text-gray-600">
                 Pace: {cards[index].attributes.fart} km/t
               </p>
             </div>
