@@ -11,6 +11,4 @@ type User = {
     username: string;
     avatar_url: string;
 
-}
-
 export type { User };
