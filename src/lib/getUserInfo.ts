@@ -12,3 +12,15 @@ export async function getUserInfo(userId: string) {
   }
   return data;
 }
+
+
+export async function getAllUsers(){
+  const { data, error } = await supabase
+  .from("profiles")
+  .select();
+  if (error) {
+    console.error("Error fetching all users:", error.message);
+    throw error;
+  }
+  return data;
+}

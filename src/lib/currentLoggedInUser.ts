@@ -1,5 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { getUserInfo } from "./getUserInfo";
+import User from "@/types/user";
 
 export default async function currentLoggedInUser() {
   const supabase = createClient();
@@ -14,5 +15,5 @@ export default async function currentLoggedInUser() {
   const userId = user.id;
 
   const userInfo = await getUserInfo(userId);
-  return userInfo;
+  return userInfo as User;
 }
