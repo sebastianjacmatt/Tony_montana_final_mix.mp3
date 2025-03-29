@@ -5,6 +5,9 @@ const nextConfig = {
       bodySizeLimit: "10mb",
     },
   },
+  images: {
+    domains: ["media.istockphoto.com", "ngvqdxgahsckkwmzaykp.supabase.co"],
+  },
 };
 
 module.exports = nextConfig;
