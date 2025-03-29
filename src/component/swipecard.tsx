@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { getNewUsers } from "@/lib/getUserInfo";
 import { likeUser } from "@/lib/likeUser";
 import { getLike } from "@/lib/getLike";
-import User from "@/types/user";
-import Like from "@/types/like";
+import { User } from "@/types/user";
+import { Like } from "@/types/like";
 import { supabase } from "@/lib/supabase";
 
 async function setMatch(user1_id: string, user2_id: string) {
@@ -47,6 +47,7 @@ export default function SwipeCard({ user }: { user: User }) {
     const loadUsers = async () => {
       try {
         const usersData = await fetchUsers(user.id);
+        console.log("usersData", usersData);
         setCards(usersData);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -120,9 +121,14 @@ export default function SwipeCard({ user }: { user: User }) {
     >
       {index < cards.length && (
         <motion.div
-          className={`w-80 h-96 bg-white rounded-2xl flex items-center justify-center text-xl font-semibold cursor-grab text-black ${getBorderColor(
+          className={`w-80 h-96 bg-white rounded-2xl flex flex-col items-center justify-center text-xl font-semibold cursor-grab text-black p-8 ${getBorderColor(
             swipeDirection
           )}`}
+          style={{
+            backgroundImage: `url(${cards[index].avatar_url})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDrag={handleDrag}
@@ -131,7 +137,14 @@ export default function SwipeCard({ user }: { user: User }) {
           initial={{ x: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
-          {cards[index].attributes.name}
+          <p className="text-2xl font-bold">{cards[index].attributes.name}</p>
+          <p className="text-sm text-pink-500">{cards[index].attributes.bio}</p>
+          <p className="text-sm text-pink-500">
+            Sko: {cards[index].attributes.sko}
+          </p>
+          <p className="text-sm text-pink-500">
+            Pace: {cards[index].attributes.fart} km/t
+          </p>
         </motion.div>
       )}
     </div>
