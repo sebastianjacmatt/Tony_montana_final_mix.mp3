@@ -1,16 +1,45 @@
-import { signup } from "@/app/signup/actions";
+"use client";
 
-export default function LoginPage() {
+import { signup } from "@/app/signup/actions";
+import { useState } from "react";
+
+export default function SignupPage() {
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(formData: FormData) {
+    setError("");
+    setLoading(true);
+
+    try {
+      await signup(formData);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Noe gikk galt");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
-<div className="h-screen overflow-hidden bg-green-50 flex items-center justify-center px-4">
+    <div className="h-screen overflow-hidden bg-green-50 flex items-center justify-center px-4">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-8 sm:p-10">
         <h1 className="text-3xl font-bold text-center text-green-700 mb-8">
           Opprett konto
         </h1>
 
-        <form className="grid grid-cols-1 sm:grid-cols-2 gap-4" >
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg">
+            {error}
+          </div>
+        )}
+
+        <form className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
               E-post
             </label>
             <input
@@ -23,7 +52,10 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
               Passord
             </label>
             <input
@@ -36,7 +68,10 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-700"
+            >
               Brukernavn
             </label>
             <input
@@ -49,7 +84,10 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700"
+            >
               Navn
             </label>
             <input
@@ -62,7 +100,10 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label htmlFor="shoes" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="shoes"
+              className="block text-sm font-medium text-gray-700"
+            >
               Sko
             </label>
             <input
@@ -75,7 +116,10 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label htmlFor="pace" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="pace"
+              className="block text-sm font-medium text-gray-700"
+            >
               Fart (km/t)
             </label>
             <input
@@ -88,9 +132,11 @@ export default function LoginPage() {
             />
           </div>
 
-        
           <div className="sm:col-span-2">
-            <label htmlFor="bio" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="bio"
+              className="block text-sm font-medium text-gray-700"
+            >
               Bio
             </label>
             <input
@@ -101,15 +147,19 @@ export default function LoginPage() {
             />
           </div>
           <div>
-            Har allerede konto? <a href="/login" className="hover:underline">Logg inn</a>
+            Har allerede konto?{" "}
+            <a href="/login" className="hover:underline">
+              Logg inn
+            </a>
           </div>
 
           <div className="sm:col-span-2">
             <button
-              formAction={signup}
-              className="w-full bg-green-400 hover:bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow transition"
+              formAction={handleSubmit}
+              disabled={loading}
+              className="w-full bg-green-400 hover:bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow transition disabled:opacity-50"
             >
-              Registrer deg
+              {loading ? "Registrerer..." : "Registrer deg"}
             </button>
           </div>
         </form>
