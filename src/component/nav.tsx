@@ -3,8 +3,8 @@ import {
   Heart,
   House,
   LogOut,
-  MessageCircle,
-  Wallet,
+  MessageCircleHeart,
+  ArrowLeftRight,
 } from "lucide-react";
 import { logout } from "@/app/login/actions";
 
@@ -13,11 +13,7 @@ export default function Nav() {
     <nav className="fixed bottom-0 w-full">
       <div className="flex bg-white items-center justify-center text-black p-4 gap-16">
         <a href="/chat" className="flex flex-col items-center">
-          <MessageCircle className="w-8 h-8" />
-          Chat
-        </a>
-        <a href="/matches" className="flex flex-col items-center">
-          <Heart className="w-8 h-8" />
+          <MessageCircleHeart className="w-8 h-8" />
           Matches
         </a>
         <a href="/" className="flex flex-col items-center">
@@ -25,7 +21,7 @@ export default function Nav() {
           Home
         </a>
         <a href="/swipe" className="flex flex-col items-center">
-          <Wallet className="w-8 h-8" />
+          <ArrowLeftRight className="w-8 h-8" />
           Swipe
         </a>
         <a href="/profile" className="flex flex-col items-center">

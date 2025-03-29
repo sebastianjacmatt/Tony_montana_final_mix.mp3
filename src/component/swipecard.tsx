@@ -119,6 +119,9 @@ export default function SwipeCard({ user }: { user: User }) {
       id="card"
       className="w-4rem display flex items-center justify-center h-screen"
     >
+    {cards.length <= index && (
+        <h1 className="text-center text-xl">😭OH NO!<br/> 🥵You have swiped on all the freaks in your area!😈 <br/>🏃‍♀️Come back later to find new potential matches😜</h1>)}
+        
       {index < cards.length && (
         <motion.div
           className={`w-80 h-96 bg-white rounded-2xl flex flex-col items-center justify-center text-xl font-semibold cursor-grab text-black p-8 ${getBorderColor(
