@@ -119,19 +119,19 @@ export default function SwipeCard({ user }: { user: User }) {
       id="card"
       className="w-4rem display flex items-center justify-center h-screen"
     >
-    {cards.length <= index && (
-        <h1 className="text-center text-xl">😭OH NO!<br/> 🥵You have swiped on all the freaks in your area!😈 <br/>🏃‍♀️Come back later to find new potential matches😜</h1>)}
-        
+      {cards.length <= index && (
+        <h1 className="text-center text-xl">
+          😭OH NO!
+          <br /> 🥵You have swiped on all the freaks in your area!😈 <br />
+          🏃‍♀️Come back later to find new potential matches😜
+        </h1>
+      )}
+
       {index < cards.length && (
         <motion.div
-          className={`w-80 h-96 bg-white rounded-2xl flex flex-col items-center justify-center text-xl font-semibold cursor-grab text-black p-8 ${getBorderColor(
+          className={`w-80 h-96 bg-white rounded-2xl flex flex-col overflow-hidden ${getBorderColor(
             swipeDirection
           )}`}
-          style={{
-            backgroundImage: `url(${cards[index].avatar_url})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDrag={handleDrag}
@@ -140,14 +140,30 @@ export default function SwipeCard({ user }: { user: User }) {
           initial={{ x: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
-          <p className="text-2xl font-bold">{cards[index].attributes.name}</p>
-          <p className="text-sm text-pink-500">{cards[index].attributes.bio}</p>
-          <p className="text-sm text-pink-500">
-            Sko: {cards[index].attributes.sko}
-          </p>
-          <p className="text-sm text-pink-500">
-            Pace: {cards[index].attributes.fart} km/t
-          </p>
+          <div
+            className="h-2/3 w-full"
+            style={{
+              backgroundImage: `url(${cards[index].avatar_url})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+          <div className="h-1/3 w-full bg-white p-4 flex flex-col gap-1">
+            <p className="text-2xl font-bold text-black">
+              {cards[index].attributes.name}
+            </p>
+            <p className="text-sm text-gray-600">
+              {cards[index].attributes.bio}
+            </p>
+            <div className="flex gap-4 mt-1">
+              <p className="text-sm text-gray-600">
+                Sko: {cards[index].attributes.sko}
+              </p>
+              <p className="text-sm text-gray-600">
+                Pace: {cards[index].attributes.fart} km/t
+              </p>
+            </div>
+          </div>
         </motion.div>
       )}
     </div>
