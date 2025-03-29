@@ -12,7 +12,7 @@ import Link from "next/link";
 
 export default async function Home() {
   const user = await currentLoggedInUser();
-  console.log(user.attributes["sko"]);
+  console.log(user?.attributes["sko"]);
 
   return (
     <div>

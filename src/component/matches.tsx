@@ -31,8 +31,13 @@ export default async function Matches() {
     ];
 
     const user = await currentLoggedInUser()
-    console.log("Your ID", user.id)
-    const matchesdb = await getUserMatches(user.id)
+    if (!user ) {
+        console.log("user not found")
+    }
+    console.log("Your ID", user?.id)
+    const matchesdb = await getUserMatches(user?.id ?? "")
+
+
     console.log("Matches", matchesdb)
     const match = getUserInfo("")
 
