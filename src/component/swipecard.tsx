@@ -33,8 +33,8 @@ async function fetchUsers(currentUserId: string) {
 }
 
 const getBorderColor = (direction: "left" | "right" | null) => {
-  if (direction === "left") return "shadow-[0_0_20px_4px_rgba(255,0,0,0.6)]"; // Red glow
-  if (direction === "right") return "shadow-[0_0_20px_4px_rgba(0,255,0,0.6)]"; // Green glow
+  if (direction === "left") return "shadow-[0_0_20px_4px_rgba(255,100,100,0.6)]"; // Red glow
+  if (direction === "right") return "shadow-[0_0_20px_4px_rgba(167,243,208,1.0)]"; // Green glow
   return "shadow-lg"; // Default shadow
 };
 
