@@ -24,3 +24,17 @@ export async function getAllUsers(){
   }
   return data;
 }
+export async function getUserMatches(usedId: string) {
+  const { data, error } = await supabase
+    .from("matches")
+    .select()
+    .eq("user1_id", usedId)
+  if (error) {
+    console.error("Error fetching matches info:", error.message);
+    throw error;
+  }
+  return data;
+
+}
+
+
