@@ -9,6 +9,7 @@ type User = {
         image: string;
     };
     username: string;
+    avatar_url: string;
 
 }
 
