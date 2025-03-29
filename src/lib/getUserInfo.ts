@@ -46,5 +46,12 @@ export async function getUserMatches(userId: string): Promise<User[]> {
   return matchedUsers;
 }
 
-
-
+export async function getNewUsers(currentUserId: string) {
+  const { data, error } = await supabase
+    .rpc("get_profiles_to_swipe", { current_user_id: currentUserId, limit_count: 20 });
+  if (error) {
+    console.error("Error fetching new users:", error.message);
+    throw error;
+  }
+  return data;
+}

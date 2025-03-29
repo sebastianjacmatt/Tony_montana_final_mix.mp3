@@ -1,7 +1,7 @@
 "use client";
 import { motion, useAnimation } from "framer-motion";
 import { useState, useEffect } from "react";
-import { getAllUsers } from "@/lib/getUserInfo";
+import { getNewUsers } from "@/lib/getUserInfo";
 import { likeUser } from "@/lib/likeUser";
 import { getLike} from "@/lib/getLike";
 import User from "@/types/user";
@@ -27,8 +27,8 @@ async function checkIfMatch(likerId: string, likedId: string){
     return data;
 }
 
-async function fetchUsers(){
-    const data:User[] = await getAllUsers();
+async function fetchUsers(currentUserId: string) {
+    const data:User[] = await getNewUsers(currentUserId);
     
     return data;
 }
@@ -43,7 +43,7 @@ export default function SwipeCard({user} :{user : User}) {
     useEffect(() => {
         const loadUsers = async () => {
             try {
-                const usersData = await fetchUsers();
+                const usersData = await fetchUsers(user.id);
                 setCards(usersData);
                 
                 

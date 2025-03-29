@@ -7,7 +7,11 @@ export async function getLike(likerId: string, likedId: string) {
         .eq("liker_id", likerId)
         .eq("liked_id", likedId)
         .single();
-    if(error){
+    if(error!.code === "PGRST116"){
+        console.log("No like found");
+        return null;
+    }
+    else if(error){
         console.error("Error fetching like:", error.message);
         throw error;
     }
