@@ -32,6 +32,7 @@ export default function LoginPage() {
               className="mt-1 w-full px-4 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
             />
           </div>
+          <div>Har ikke konto? <a href="/signup" className="hover:underline">Lag konto</a></div>
           <div>
             <button
               formAction={login}
