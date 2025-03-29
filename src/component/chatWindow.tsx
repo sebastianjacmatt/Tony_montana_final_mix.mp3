@@ -51,7 +51,7 @@ export function ChatWindow({ match, userId }: ChatWindowProps) {
   };
 
   return (
-    <div className="flex-1 flex flex-col h-full">
+    <div className="flex-1 flex flex-col h-full ">
       {/* Chat header */}
       <div className="border-b border-gray-200 p-4 flex items-center">
         <div className="relative h-10 w-10 rounded-full overflow-hidden mr-3">
