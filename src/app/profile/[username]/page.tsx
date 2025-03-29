@@ -4,31 +4,27 @@ import { getUserByUsername } from "@/lib/getUserInfo";
 import updateUser from "./actions";
 import { redirect } from "next/navigation";
 
-export default async function Profile({ 
-    params,
-   }: {
-    params: Promise<{username: string}>;
-  }
-) {
+export default async function Profile({
+  params,
+}: {
+  params: Promise<{ username: string }>;
+}) {
   const user = await currentLoggedInUser();
   if (!user) {
-      return <div>Loading...</div>; // Handle the case when user is not logged in
+    return <div>Loading...</div>; // Handle the case when user is not logged in
   }
 
   const { username } = await params;
-  
 
-  console.log( await getUserByUsername(username));
+  console.log(await getUserByUsername(username));
 
-  const userData = await getUserByUsername(username)
+  const userData = await getUserByUsername(username);
   let edit = false;
   if (user.id === userData.id) {
     edit = true;
   }
   if (!edit) {
-    return (
-      <UserProifle user = {userData} />
-    );
+    return <UserProifle user={userData} />;
   }
 
   if (edit) {
@@ -43,19 +39,23 @@ export default async function Profile({
               className="w-36 h-36 rounded-3xl object-cover border-4 border-green-100 shadow-md"
             />
           </div>
-  
+
           {/* Username & Bio */}
           <div className="text-center">
-            <h1 className="text-3xl font-extrabold text-emerald-300">{user.attributes.name}</h1>
-            <p className="mt-2 text-white text-base italic">{user.attributes.bio}</p>
+            <h1 className="text-3xl font-extrabold text-emerald-300">
+              {user.attributes.name}
+            </h1>
+            <p className="mt-2 text-white text-base italic">
+              {user.attributes.bio}
+            </p>
           </div>
-          
-          <form action={updateUser} method="post" className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm sm:text-base">
-            
+
+          <form
+            action={updateUser}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm sm:text-base"
+          >
             <div className="bg-green-100 rounded-xl p-4 shadow-sm">
-              <label className="text-gray-800 block mb-1">
-                Username
-              </label>
+              <label className="text-gray-800 block mb-1">Username</label>
               <input
                 type="text"
                 name="name"
@@ -64,11 +64,9 @@ export default async function Profile({
                 className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
               />
             </div>
-    
+
             <div className="bg-green-100 rounded-xl p-4 shadow-sm">
-              <label className="text-gray-800 block mb-1">
-                Shoes
-              </label>
+              <label className="text-gray-800 block mb-1">Shoes</label>
               <input
                 type="text"
                 name="sko"
@@ -77,11 +75,9 @@ export default async function Profile({
                 className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
               />
             </div>
-    
+
             <div className="bg-green-100 rounded-xl p-4 shadow-sm">
-              <label className="text-gray-800 block mb-1">
-                Pace
-              </label>
+              <label className="text-gray-800 block mb-1">Pace</label>
               <input
                 type="number"
                 name="fart"
@@ -90,11 +86,9 @@ export default async function Profile({
                 className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
               />
             </div>
-    
+
             <div className="bg-green-100 rounded-xl p-4 shadow-sm">
-              <label className="text-gray-800 block mb-1">
-                Biografi
-              </label>
+              <label className="text-gray-800 block mb-1">Biografi</label>
               <input
                 type="text"
                 name="bio"
@@ -103,7 +97,13 @@ export default async function Profile({
                 className="w-full px-2 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-emerald-300"
               />
             </div>
-    
+            <div>
+              <label htmlFor="avatar" className="text-gray-800 block mb-1">
+                Profile Picture
+              </label>
+              <input type="file" id="avatar" name="avatar" accept="image/*" />
+            </div>
+
             {/* Submit Button (spans both columns on larger screens) */}
             <div className="sm:col-span-2 flex justify-end">
               <button
@@ -119,5 +119,4 @@ export default async function Profile({
     );
   }
   redirect("/profile/" + username);
-
 }
