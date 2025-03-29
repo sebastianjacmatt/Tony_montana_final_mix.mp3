@@ -7,7 +7,7 @@ export async function getLike(likerId: string, likedId: string) {
         .eq("liker_id", likerId)
         .eq("liked_id", likedId)
         .single();
-    if(error!.code === "PGRST116"){
+    if(error?.code === "PGRST116"){
         console.log("No like found");
         return null;
     }
