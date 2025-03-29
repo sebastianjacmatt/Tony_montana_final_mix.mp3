@@ -38,7 +38,7 @@ export default async function Home() {
                 href={buttonroute}
                 className="flex items-center bg-[#A7F3D0] px-4 py-2 text-sm font-medium text-[#065F46] shadow-sm hover:bg-[#6EE7B7] focus:outline-none focus:ring-2 focus:ring-[#065F46] focus:ring-offset-2 rounded-md"
               >
-                Finn din match <ArrowRight className="ml-2 h-4 w-4" />
+                Find your match <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
               <button>Learn More</button>
             </div>
