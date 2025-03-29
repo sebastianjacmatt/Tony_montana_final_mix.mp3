@@ -1,3 +1,5 @@
+import { Preference } from "./preference";
+
 type User = {
   id: string;
   email: string;
@@ -8,6 +10,7 @@ type User = {
     bio: string;
     image: string;
   };
+  preference: Preference;
   username: string;
   avatar_url: string;
 };

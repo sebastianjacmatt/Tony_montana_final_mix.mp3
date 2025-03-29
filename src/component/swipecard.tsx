@@ -7,6 +7,8 @@ import { getLike } from "@/lib/getLike";
 import { User } from "@/types/user";
 import { Like } from "@/types/like";
 import { supabase } from "@/lib/supabase";
+import { Preference } from "@/types/preference";
+import Preferences from "./preference";
 
 async function setMatch(user1_id: string, user2_id: string) {
   const { error } = await supabase
@@ -56,6 +58,7 @@ export default function SwipeCard({ user }: { user: User }) {
 
     loadUsers();
   }, []);
+
 
   const [swipeDirection, setSwipeDirection] = useState<"left" | "right" | null>(
     null
@@ -124,7 +127,7 @@ export default function SwipeCard({ user }: { user: User }) {
         
       {index < cards.length && (
         <motion.div
-          className={`w-80 h-96 bg-white rounded-2xl flex flex-col items-center justify-center text-xl font-semibold cursor-grab text-black p-8 ${getBorderColor(
+          className={`relative w-80 h-96 bg-white rounded-2xl flex flex-col items-center justify-center text-xl font-semibold cursor-grab text-black p-8 ${getBorderColor(
             swipeDirection
           )}`}
           style={{
@@ -148,6 +151,7 @@ export default function SwipeCard({ user }: { user: User }) {
           <p className="text-sm text-pink-500">
             Pace: {cards[index].attributes.fart} km/t
           </p>
+        <Preferences prefs = {cards[index].preference}/>
         </motion.div>
       )}
     </div>
