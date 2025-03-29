@@ -25,7 +25,7 @@ export default function SignupPage() {
     <div className="h-screen overflow-hidden bg-green-50 flex items-center justify-center px-4">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-8 sm:p-10">
         <h1 className="text-3xl font-bold text-center text-green-700 mb-8">
-          Opprett konto
+          Sign up
         </h1>
 
         {error && (
@@ -40,7 +40,7 @@ export default function SignupPage() {
               htmlFor="email"
               className="block text-sm font-medium text-gray-700"
             >
-              E-post
+              Email
             </label>
             <input
               id="email"
@@ -56,7 +56,7 @@ export default function SignupPage() {
               htmlFor="password"
               className="block text-sm font-medium text-gray-700"
             >
-              Passord
+              Password
             </label>
             <input
               id="password"
@@ -72,7 +72,7 @@ export default function SignupPage() {
               htmlFor="username"
               className="block text-sm font-medium text-gray-700"
             >
-              Brukernavn
+              Username
             </label>
             <input
               id="username"
@@ -88,7 +88,7 @@ export default function SignupPage() {
               htmlFor="name"
               className="block text-sm font-medium text-gray-700"
             >
-              Navn
+              Name
             </label>
             <input
               id="name"
@@ -104,7 +104,7 @@ export default function SignupPage() {
               htmlFor="shoes"
               className="block text-sm font-medium text-gray-700"
             >
-              Sko
+              Running shoe
             </label>
             <input
               id="shoes"
@@ -120,7 +120,7 @@ export default function SignupPage() {
               htmlFor="pace"
               className="block text-sm font-medium text-gray-700"
             >
-              Fart (km/t)
+              Pace (km/t)
             </label>
             <input
               id="pace"
@@ -147,9 +147,9 @@ export default function SignupPage() {
             />
           </div>
           <div>
-            Har allerede konto?{" "}
+            Already have account?{" "}
             <a href="/login" className="hover:underline">
-              Logg inn
+              Log in
             </a>
           </div>
 
@@ -159,7 +159,7 @@ export default function SignupPage() {
               disabled={loading}
               className="w-full bg-green-400 hover:bg-green-500 text-white font-semibold py-3 px-6 rounded-lg shadow transition disabled:opacity-50"
             >
-              {loading ? "Registrerer..." : "Registrer deg"}
+              {loading ? "Sign..." : "Sign up"}
             </button>
           </div>
         </form>
