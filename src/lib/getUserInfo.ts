@@ -55,3 +55,18 @@ export async function getNewUsers(currentUserId: string) {
   }
   return data;
 }
+
+
+export async function getUserByUsername(username: string) {
+
+  const { data, error } = await supabase
+    .from("profiles")
+    .select()
+    .eq("username", username)
+    .single();
+  if (error) {
+    console.error("Error fetching user info:", error.message);
+    throw error;
+  }
+  return data as User;
+}

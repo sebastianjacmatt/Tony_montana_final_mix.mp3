@@ -4,7 +4,7 @@ type User = {
   attributes: {
     name: string;
     sko: string;
-    fart: number;
+    fart: string;
     bio: string;
     image: string;
   };
