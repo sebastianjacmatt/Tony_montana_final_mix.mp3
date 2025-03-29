@@ -12,7 +12,11 @@ import Link from "next/link";
 
 export default async function Home() {
   const user = await currentLoggedInUser();
-  console.log(user?.attributes["sko"]);
+  let buttonroute = "/signup";
+
+  if (user) {
+    buttonroute = "/swipe";
+  }
 
   return (
     <div>
@@ -31,7 +35,7 @@ export default async function Home() {
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Link
-                href="/login"
+                href={buttonroute}
                 className="flex items-center bg-[#A7F3D0] px-4 py-2 text-sm font-medium text-[#065F46] shadow-sm hover:bg-[#6EE7B7] focus:outline-none focus:ring-2 focus:ring-[#065F46] focus:ring-offset-2 rounded-md"
               >
                 Finn din match <ArrowRight className="ml-2 h-4 w-4" />
