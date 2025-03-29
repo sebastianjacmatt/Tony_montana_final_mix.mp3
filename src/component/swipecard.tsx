@@ -7,7 +7,6 @@ import { getLike} from "@/lib/getLike";
 import User from "@/types/user";
 import Like from "@/types/like";
 import { supabase } from "@/lib/supabase";
-import { showNotification } from "@mantine/notifications";
 
 
 async function setMatch(user1_id: string, user2_id: string){
