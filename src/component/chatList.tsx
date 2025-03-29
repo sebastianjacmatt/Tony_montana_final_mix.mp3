@@ -63,7 +63,7 @@ export function ChatList({
             <div>
               <h3 className="font-medium">{otherUser.username || "Runner"}</h3>
               <p className="text-sm text-gray-500">
-                Matched {new Date(match.createdAt).toLocaleDateString()}
+                Matched {new Date(match.created_at).toLocaleDateString()}
               </p>
             </div>
           </div>
