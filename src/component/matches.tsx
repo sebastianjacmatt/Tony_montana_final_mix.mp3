@@ -40,7 +40,7 @@ export default function Matches({user} :{user : User}) {
         {matches.map((match) => (
           <div key={match.id} className="flex flex-col items-center">
             <img
-              src={match.attributes.image} // ✅ this assumes profilePic is part of User
+              src={match.avatar_url} // ✅ this assumes profilePic is part of User
               alt={match.username}
               className="w-32 h-32 rounded-3xl border-2 border-[#A7F3D0] shadow hover:shadow-md shadow-[#A7F3D0]"
             />
