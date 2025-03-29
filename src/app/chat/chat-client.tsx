@@ -15,11 +15,13 @@ export default function ChatClient({ user }: ChatClientProps) {
   const [selectedMatch, setSelectedMatch] = useState<Match | null>(null);
 
   return (
-    <div className="flex h-screen bg-white">
+    <div className="flex h-screen bg-gray-100">
       {/* Sidebar with matches */}
-      <div className="w-80 border-r border-gray-200 h-full overflow-y-auto">
-        <div className="p-4 border-b border-gray-200">
-          <h2 className="text-xl font-semibold">Your Matches</h2>
+      <div className="w-80 bg-gradient-to-b from-green-200 to-emerald-800 border-r border-gray-300 h-full overflow-y-auto shadow-lg">
+        <div className="p-4 border-b border-gray-300">
+          <h2 className="text-xl font-semibold text-zinc-800">
+            Your Matches
+          </h2>
         </div>
         <ChatList
           userId={user.id}

@@ -29,12 +29,12 @@ export function ChatWindow({ match, userId }: ChatWindowProps) {
 
   if (!match) {
     return (
-      <div className="flex-1 flex items-center justify-center p-6 bg-gray-50">
+      <div className="flex-1 flex items-center justify-center p-6 bg-gray-600">
         <div className="text-center">
-          <h3 className="text-lg font-medium text-gray-700">
+          <h3 className="text-lg font-medium text-[#A7F3D0]">
             Select a match to start chatting
           </h3>
-          <p className="mt-1 text-gray-500">
+          <p className="mt-1 text-gray-300">
             Connect with your running partners
           </p>
         </div>
@@ -51,9 +51,9 @@ export function ChatWindow({ match, userId }: ChatWindowProps) {
   };
 
   return (
-    <div className="flex-1 flex flex-col h-full ">
+    <div className="flex-1 flex flex-col h-full bg-gray-600">
       {/* Chat header */}
-      <div className="border-b border-gray-200 p-4 flex items-center">
+      <div className="border-b border-[#A7F3D0] bg-gray-700 p-4 flex items-center">
         <div className="relative h-10 w-10 rounded-full overflow-hidden mr-3">
           <Image
             src={otherUser?.avatar_url || ""}
@@ -64,16 +64,18 @@ export function ChatWindow({ match, userId }: ChatWindowProps) {
           />
         </div>
         <div>
-          <h3 className="font-medium">{otherUser?.username || "Runner"}</h3>
+          <h3 className="text-xl font-semibold text-[#A7F3D0]">
+            {otherUser?.username || "Runner"}
+          </h3>
         </div>
       </div>
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {loading ? (
-          <div className="text-center text-gray-500">Loading messages...</div>
+          <div className="text-center text-gray-300">Loading messages...</div>
         ) : messages.length === 0 ? (
-          <div className="text-center text-gray-500">
+          <div className="text-center text-gray-300">
             <p>No messages yet</p>
             <p className="text-sm mt-1">
               Start the conversation with your running partner!
@@ -86,21 +88,19 @@ export function ChatWindow({ match, userId }: ChatWindowProps) {
             return (
               <div
                 key={message.id}
-                className={`flex ${
-                  isOwnMessage ? "justify-end" : "justify-start"
-                }`}
+                className={`flex ${isOwnMessage ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-xs sm:max-w-md px-4 py-2 rounded-lg ${
+                  className={`max-w-xs sm:max-w-md px-4 py-2 rounded-lg shadow transition ${
                     isOwnMessage
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-200 text-gray-800"
+                      ? "bg-[#A7F3D0] text-gray-800"
+                      : "bg-gray-700 text-white"
                   }`}
                 >
                   <p>{message.content}</p>
                   <p
                     className={`text-xs mt-1 ${
-                      isOwnMessage ? "text-blue-100" : "text-gray-500"
+                      isOwnMessage ? "text-gray-600" : "text-gray-400"
                     }`}
                   >
                     {new Date(message.created_at).toLocaleTimeString([], {
@@ -117,19 +117,19 @@ export function ChatWindow({ match, userId }: ChatWindowProps) {
       </div>
 
       {/* Message input */}
-      <form onSubmit={handleSubmit} className="border-t border-gray-200 p-4">
+      <form onSubmit={handleSubmit} className="border-t border-[#A7F3D0] bg-gray-700 p-4">
         <div className="flex">
           <input
             type="text"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             placeholder="Type a message..."
-            className="flex-1 border border-gray-300 rounded-l-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="flex-1 border border-gray-600 bg-gray-600 text-white rounded-l-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-[#A7F3D0] focus:border-transparent"
           />
           <button
             type="submit"
             disabled={!newMessage.trim()}
-            className="bg-blue-500 text-white rounded-r-lg px-4 py-2 font-medium hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-[#A7F3D0] text-gray-800 rounded-r-lg px-4 py-2 font-medium hover:bg-green-300 focus:outline-none focus:ring-2 focus:ring-[#A7F3D0] disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Send
           </button>
