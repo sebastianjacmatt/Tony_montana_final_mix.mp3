@@ -46,12 +46,12 @@ export function ChatList({
         return (
           <div
             key={match.id}
-            className={`p-4 flex items-center cursor-pointer hover:bg-gray-50 transition ${
-              selectedMatchId === match.id ? "bg-blue-50" : ""
+            className={`p-4 flex items-center cursor-pointer hover:bg-green-100 transition ${
+              selectedMatchId === match.id ? "bg-green-100" : ""
             }`}
             onClick={() => onSelectMatch(match)}
           >
-            <div className="relative h-12 w-12 rounded-full overflow-hidden mr-4">
+            <div className="relative h-18 border border-emerald-300 w-18 rounded-2xl overflow-hidden mr-4">
               <Image
                 src={otherUser.avatar_url}
                 alt={otherUser.username || "User"}
@@ -62,7 +62,7 @@ export function ChatList({
             </div>
             <div>
               <h3 className="font-medium">{otherUser.username || "Runner"}</h3>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-zinc-800">
                 Matched {new Date(match.created_at).toLocaleDateString()}
               </p>
             </div>
