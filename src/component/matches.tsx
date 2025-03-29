@@ -1,7 +1,7 @@
 import currentLoggedInUser from "@/lib/currentLoggedInUser";
-import { getUserInfo } from "@/lib/getUserInfo";
+import { getUserInfo, getUserMatches } from "@/lib/getUserInfo";
 
-export default function Matches() {
+export default async function Matches() {
     const matches = [
         {
             id: 1,
@@ -27,12 +27,18 @@ export default function Matches() {
             lastMessage: "løp til pappa;)",
             profilePic: "https://ca.slack-edge.com/TCWTZ3R2T-U05RFMA45PG-cabe46d51fa8-512"
         }
-        
+
     ];
 
-    const user = currentLoggedInUser()
-    console.log(user)
-    //user.matches()
+    const user = await currentLoggedInUser()
+    if (!user ) {
+        console.log("user not found")
+    }
+    console.log("Your ID", user?.id)
+    const matchesdb = await getUserMatches(user?.id ?? "")
+
+
+    console.log("Matches", matchesdb)
     const match = getUserInfo("")
 
     return (
@@ -64,7 +70,7 @@ export default function Matches() {
                                 <p className="text-white">{match.lastMessage}</p>
                             </div>
                             <button className="text-orange-300 font-medium hover:underline">
-                                View
+                                Se
                             </button>
                         </div>
                     </div>

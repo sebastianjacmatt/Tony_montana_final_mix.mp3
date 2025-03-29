@@ -1,6 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { getUserInfo } from "./getUserInfo";
-import User from "@/types/user";
+import {User} from "@/types/user";
 
 export default async function currentLoggedInUser() {
   const supabase = createClient();
