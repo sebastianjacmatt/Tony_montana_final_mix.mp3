@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { Match } from "@/types/match";
-import { User } from "@/types/user";
 
 export function useMatches(userId: string | undefined) {
   const [matches, setMatches] = useState<Match[]>([]);

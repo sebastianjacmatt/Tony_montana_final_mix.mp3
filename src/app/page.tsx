@@ -1,13 +1,6 @@
 import Image from "next/image";
 import currentLoggedInUser from "@/lib/currentLoggedInUser";
-import {
-  ArrowRight,
-  Calendar,
-  ChevronRight,
-  Heart,
-  MapPin,
-  Users,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default async function Home() {

@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { useMatches } from "@/hooks/useMatches";
 import { Match } from "@/types/match";
 import { User } from "@/types/user";
 import Image from "next/image";
-import { Link } from "lucide-react";
 
 interface ChatListProps {
   userId: string;
@@ -60,17 +58,22 @@ export function ChatList({
               />
             </div>
             <div>
-                <h3 className="font-medium">{otherUser.attributes.name || "Runner"}</h3>
-                <p className="text-sm text-zinc-800">
-                  Matched {new Date(match.created_at).toLocaleDateString()}
-                </p>
-                <a 
+              <h3 className="font-medium">
+                {otherUser.attributes.name || "Runner"}
+              </h3>
+              <p className="text-sm text-zinc-800">
+                Matched {new Date(match.created_at).toLocaleDateString()}
+              </p>
+              <a
                 href={`/profile/${otherUser.username}`}
                 onClick={(e) => {
                   // Prevent the parent onClick from also firing
                   e.stopPropagation();
                   console.log("Link clicked");
-              }}>View their profile</a>
+                }}
+              >
+                View their profile
+              </a>
             </div>
           </div>
         );

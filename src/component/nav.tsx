@@ -1,6 +1,5 @@
 import {
   CircleUser,
-  Heart,
   House,
   LogOut,
   MessageCircleHeart,

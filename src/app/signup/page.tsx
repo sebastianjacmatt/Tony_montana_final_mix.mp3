@@ -5,7 +5,6 @@ import { useState } from "react";
 
 export default function SignupPage() {
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(formData: FormData) {

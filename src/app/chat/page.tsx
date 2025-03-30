@@ -1,9 +1,5 @@
-import { useState } from "react";
-import { ChatList } from "@/component/chatList";
-import { ChatWindow } from "@/component/chatWindow";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
-import { Match } from "@/types/match";
 import ChatClient from "./chat-client";
 import { redirect } from "next/navigation";
 export default async function ChatPage() {
