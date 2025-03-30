@@ -19,8 +19,8 @@ export function useMatches(userId: string | undefined) {
         .select(
           `
           *,
-          user1:user1_id(id, username, avatar_url),
-          user2:user2_id(id, username, avatar_url)
+          user1:user1_id(id, attributes, username, avatar_url),
+          user2:user2_id(id, attributes, username, avatar_url)
         `
         )
         .or(`user1_id.eq.${userId},user2_id.eq.${userId}`);
