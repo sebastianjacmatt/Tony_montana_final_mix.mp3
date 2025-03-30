@@ -117,7 +117,7 @@ export default function SwipeCard({ user }: { user: User }) {
   return (
     <div
       id="card"
-      className="w-4rem display flex items-center justify-center h-screen bg-gradient-to-bl from-green-300 to-emerald-700"
+      className="w-4rem display flex items-center justify-center h-screen bg-gradient-to-b from-green-200 to-emerald-800"
     >
       {cards.length <= index && (
         <h1 className="text-center text-xl">
@@ -141,25 +141,25 @@ export default function SwipeCard({ user }: { user: User }) {
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
           <div
-            className="h-2/3 w-full"
+            className="h-11/12 w-full"
             style={{
               backgroundImage: `url(${cards[index].avatar_url})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           />
-          <div className="h-1/3 w-full bg- p-4 flex flex-col gap-1">
-            <p className="text-2xl font-bold text-black">
+          <div className="h w-full  p-4 flex flex-col gap-1 bg-gray-700">
+            <p className="text-2xl font-bold text-white">
               {cards[index].attributes.name}
             </p>
-            <p className="text-md text-gray-600">
+            <p className="text-md text-white">
               {cards[index].attributes.bio}
             </p>
             <div className="flex gap-4 mt-1">
-              <p className="text-md text-gray-600">
-                Sko: {cards[index].attributes.sko}
+              <p className="text-md text-white">
+                Shoe: {cards[index].attributes.sko}
               </p>
-              <p className="text-md text-gray-600">
+              <p className="text-md text-white">
                 Pace: {cards[index].attributes.fart} min/km
               </p>
             </div>
