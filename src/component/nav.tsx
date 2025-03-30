@@ -11,7 +11,7 @@ import Link from "next/link";
 export default function Nav() {
   return (
     <nav className="fixed bottom-0 w-full">
-      <div className="flex bg-white items-center justify-center text-black p-4 gap-16">
+      <div className="flex bg-gradient-to-r from-emerald-800 to-[#A7F3D0] items-center justify-center text-black p-4 gap-16">
         <Link href="/chat" className="flex flex-col items-center">
           <MessageCircleHeart className="w-8 h-8" />
           Matches
