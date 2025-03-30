@@ -1,4 +1,3 @@
-import Image from "next/image";
 import currentLoggedInUser from "@/lib/currentLoggedInUser";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
