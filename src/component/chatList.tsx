@@ -34,7 +34,6 @@ export function ChatList({
       </div>
     );
   }
-
   return (
     <div className="divide-y divide-gray-200">
       {matches.map((match) => {
@@ -43,7 +42,6 @@ export function ChatList({
           match.user1_id === userId
             ? (match.user2 as User)
             : (match.user1 as User);
-
         return (
           <div
             key={match.id}
@@ -62,7 +60,7 @@ export function ChatList({
               />
             </div>
             <div>
-                <h3 className="font-medium">{otherUser.username || "Runner"}</h3>
+                <h3 className="font-medium">{otherUser.attributes.name || "Runner"}</h3>
                 <p className="text-sm text-zinc-800">
                   Matched {new Date(match.created_at).toLocaleDateString()}
                 </p>
