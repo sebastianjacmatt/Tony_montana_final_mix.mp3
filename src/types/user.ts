@@ -6,7 +6,6 @@ type User = {
     sko: string;
     fart: string;
     bio: string;
-    image: string;
   };
   username: string;
   avatar_url: string;

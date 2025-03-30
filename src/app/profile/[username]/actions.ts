@@ -14,15 +14,16 @@ export default async function updateUser(formData: FormData) {
   if (!user) {
     throw new Error("Not allowed to update user");
   }
-
+  let uptUsr: User;
   const name = (formData.get("name") as string) ?? user?.attributes.name;
   const sko = (formData.get("sko") as string) ?? user?.attributes.sko;
   const fart = (formData.get("fart") as string) ?? user?.attributes.fart;
   const bio = (formData.get("bio") as string) ?? user?.attributes.bio;
   const avatarFile = formData.get("avatar") as File | null;
+  console.log("avatarFile", avatarFile);
   let avatarUrl: string | null = null;
 
-  if (avatarFile && avatarFile.size > 0) {
+  if (avatarFile?.size && avatarFile.size > 0) {
     const fileExt = avatarFile.name.split(".").pop();
     const filePath = `avatars/${user.id}-${randomUUID()}.${fileExt}`;
 
@@ -44,20 +45,33 @@ export default async function updateUser(formData: FormData) {
       .getPublicUrl(filePath);
 
     avatarUrl = data.publicUrl;
-  }
 
-  const uptUsr = {
-    id: user.id,
-    email: user.email,
-    attributes: {
-      name,
-      sko,
-      fart,
-      bio,
-    },
-    username: user.username,
-    avatar_url: avatarUrl,
-  };
+    uptUsr = {
+      id: user.id,
+      email: user.email,
+      attributes: {
+        name,
+        sko,
+        fart,
+        bio,
+      },
+      username: user.username,
+      avatar_url: avatarUrl,
+    };
+  } else {
+    uptUsr = {
+      id: user.id,
+      email: user.email,
+      attributes: {
+        name,
+        sko,
+        fart,
+        bio,
+      },
+      username: user.username,
+      avatar_url: user.avatar_url,
+    };
+  }
 
   await updateUserInfo(uptUsr as User);
   redirect("/profile/" + uptUsr.username);
