@@ -1,4 +1,3 @@
-import Image from "next/image";
 import currentLoggedInUser from "@/lib/currentLoggedInUser";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -13,7 +12,8 @@ export default async function Home() {
 
   return (
     <div>
-      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+      <section className="relative w-full h-screen bg-cover bg-center bg-[url(https://media.istockphoto.com/id/1280283380/photo/couple-enjoying-running-together.jpg?s=1024x1024&w=is&k=20&c=-RJaGYgnm9SAykMkai_vQW0Itj6rNygmi0_p6kIo9ew=)]">
+        <section className="absolute w-screen h-screen py-12 md:py-24 lg:py-32 xl:py-48 bg-top bg-white/50">
         <div className="flex justify-between items-center mx-40">
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
@@ -36,7 +36,7 @@ export default async function Home() {
               <button>Learn More</button>
             </div>
           </div>
-          <div className="">
+          {/* <div className="">
             <Image
               src="https://media.istockphoto.com/id/1280283380/photo/couple-enjoying-running-together.jpg?s=1024x1024&w=is&k=20&c=-RJaGYgnm9SAykMkai_vQW0Itj6rNygmi0_p6kIo9ew="
               alt="hero"
@@ -44,8 +44,9 @@ export default async function Home() {
               height={500}
               className="w-full max-w-[600px]"
             />
-          </div>
+          </div> */}
         </div>
+        </section>
       </section>
     </div>
   );
