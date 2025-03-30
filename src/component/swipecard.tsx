@@ -160,7 +160,7 @@ export default function SwipeCard({ user }: { user: User }) {
                 Sko: {cards[index].attributes.sko}
               </p>
               <p className="text-md text-gray-600">
-                Pace: {cards[index].attributes.fart} km/t
+                Pace: {cards[index].attributes.fart} min/km
               </p>
             </div>
           </div>

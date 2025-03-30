@@ -120,7 +120,7 @@ export default function SignupPage() {
               htmlFor="pace"
               className="block text-sm font-medium text-gray-700"
             >
-              Pace (km/t)
+              Pace (min/km)
             </label>
             <input
               id="pace"
